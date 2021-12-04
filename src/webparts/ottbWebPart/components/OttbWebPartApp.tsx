@@ -10,6 +10,7 @@ import * as Utils from '../../utils'
 export default class OttbWebPartApp extends React.Component<IOttbWebPartProps, any> {
   private _client:SPHttpClient = this.props.context.spHttpClient;
   private _webUrl:string = this.props.context.pageContext.web.absoluteUrl;
+  private _sectionSize: Number = this.props.webPartSectionSize;
 
   state={
 
@@ -67,6 +68,7 @@ export default class OttbWebPartApp extends React.Component<IOttbWebPartProps, a
     return (
       <Customizer settings={{theme: this.props.themeVariant}}>
       <div className={ styles.ottbWebPart }>
+        <h3> Main Component {this._sectionSize}</h3>
         <div className={_container}>
           {this.state.items.map(item => <OttbWebPart link={item}> </OttbWebPart>
         )}

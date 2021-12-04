@@ -30,7 +30,8 @@ export default class OttbWebPartWebPart extends BaseClientSideWebPart<IOttbWebPa
       {
         listTitle: this.properties.listName,
         context: this.context,
-        themeVariant:this._themeVariant
+        themeVariant:this._themeVariant,
+        webPartSectionSize: this.domElement.getBoundingClientRect().width
       }
     );
 
