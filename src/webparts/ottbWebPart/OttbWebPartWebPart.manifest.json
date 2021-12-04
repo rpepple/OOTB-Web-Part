@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "19f6239a-9fdc-4cde-8526-a66acfa910c0",
+  "alias": "OttbWebPartWebPart",
+  "componentType": "WebPart",
+
+  
+  "version": "*",
+  "manifestVersion": 2,
+  "supportsThemeVariants": true,
+
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "ottb-web-part" },
+    "description": { "default": "Testing Stuff" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "listName": "QuickLinks"
+    }
+  }]
+}
