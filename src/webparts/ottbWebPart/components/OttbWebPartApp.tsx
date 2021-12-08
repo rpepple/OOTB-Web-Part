@@ -6,21 +6,32 @@ import {SPHttpClient,SPHttpClientResponse} from '@microsoft/sp-http'
 import OttbWebPartDocuments from './OttbWebPartDocuments';
 import{Customizer, mergeStyles} from 'office-ui-fabric-react'
 import * as Utils from '../../utils'
-
+import { SectionSizesEnum } from './SectionSizesEnum';
+import AddLink from './AddLinkPanel/AddLink';
 export default class OttbWebPartApp extends React.Component<IOttbWebPartProps, any> {
   private _client:SPHttpClient = this.props.context.spHttpClient;
   private _webUrl:string = this.props.context.pageContext.web.absoluteUrl;
-  private _sectionSize: Number = this.props.webPartSectionSize;
+  private _sectionSize: number = this.props.webPartSectionSize;
 
   state={
 
      items:[],
-     documents:[]
+     documents:[],
+     sectionSize: SectionSizesEnum.small
+     
   }
 
   public componentDidMount(){
     this._getQuickLinks();
     this._getDocuments();
+    this._loadSectionSize();
+  }
+
+  private _loadSectionSize(){
+
+      this.setState({
+        sectionSize: Utils.getWebPartSectionSize(this._sectionSize)
+      })
   }
 
   private _getDocuments(){
@@ -63,19 +74,30 @@ export default class OttbWebPartApp extends React.Component<IOttbWebPartProps, a
         display:"flex",
         flexDirection:"row",
         flexWrap:"wrap",
+        justifyContent: "space-between"
         
     });
+
+  
+    let _header = mergeStyles({
+      fontSize:20,
+      marginBottom: 18,
+      fontWeight: 500
+  
+    })
+
     return (
       <Customizer settings={{theme: this.props.themeVariant}}>
       <div className={ styles.ottbWebPart }>
-        <h3> Main Component {this._sectionSize}</h3>
+        <div className={_header}> Main Component </div>
+        <AddLink />
         <div className={_container}>
           {this.state.items.map(item => <OttbWebPart link={item}> </OttbWebPart>
         )}
         </div>
         <h3> Documents</h3>
         <div>
-          {this.state.documents.map(document=> <OttbWebPartDocuments link={document} ></OttbWebPartDocuments>)}  
+          {this.state.documents.map(document=> <OttbWebPartDocuments sectionSize={this.state.sectionSize} link={document} ></OttbWebPartDocuments>)}  
           </div>
       </div>
       </Customizer>

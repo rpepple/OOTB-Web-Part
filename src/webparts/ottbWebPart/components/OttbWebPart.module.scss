@@ -1,8 +1,10 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .ottbWebPart {
-  .container {
-    white-space: normal
+  .textWrapper {
+    display: -webkit-box;
+    -webkit-box-orient: vertial;
+    -webkit-inline-clam: 2;
   }
 
   

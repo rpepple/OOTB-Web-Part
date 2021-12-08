@@ -5,5 +5,5 @@ export interface IOttbWebPartProps {
   listTitle: string;
   context: WebPartContext;
   themeVariant: IReadonlyTheme | undefined;
-  webPartSectionSize: Number
+  webPartSectionSize: number
 }
