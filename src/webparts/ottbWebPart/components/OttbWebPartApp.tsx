@@ -90,7 +90,7 @@ export default class OttbWebPartApp extends React.Component<IOttbWebPartProps, a
       <Customizer settings={{theme: this.props.themeVariant}}>
       <div className={ styles.ottbWebPart }>
         <div className={_header}> Main Component </div>
-        <AddLink buttonTitle="Add Link" />
+        <AddLink buttonTitle="Add Link" HandleAddLink ={()=>{}} />
         <div className={_container}>
           {this.state.items.map(item => <OttbWebPart link={item}> </OttbWebPart>
         )}
